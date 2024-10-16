@@ -1,94 +1,81 @@
-////////// SIDEBAR //////// 
-$sidebar-width-lg: 220px;
-$sidebar-width-mini: 145px; 
-$sidebar-width-icon: 70px;
+// Override Bootstrap default variables here
+// Do not edit any of the files in /vendor/bootstrap/scss/!
 
-$sidebar-light-bg: #F4F5F7;
-$sidebar-light-menu-color: #484848;
-$sidebar-light-submenu-color: $sidebar-light-menu-color;
-$sidebar-light-menu-active-bg: #fff;
-$sidebar-light-menu-active-color: #1F3BB3;
-$sidebar-light-menu-hover-bg: #fff;
-$sidebar-light-menu-hover-color: #fff;
-$sidebar-light-submenu-hover-color: #000;
-$sidebar-light-submenu-active-color: #1F3BB3;
-$sidebar-light-menu-icon-color: $sidebar-light-menu-color;
-$sidebar-light-menu-arrow-color: #bfccda;
-$sidebar-light-profile-name-color: #404852;
-$sidebar-light-profile-title-color: #8d9498;
+// Color Variables
+// Bootstrap Color Overrides
 
-$sidebar-dark-bg: #232227; 
-$sidebar-dark-menu-color: #FFFFFF;
-$sidebar-dark-menu-active-bg: transparent;
-$sidebar-dark-menu-active-color: $white;
-$sidebar-dark-menu-hover-bg: transparent;
-$sidebar-dark-menu-hover-color: #fff;
-$sidebar-dark-submenu-color: $sidebar-dark-menu-color;
-$sidebar-dark-submenu-hover-bg: initial;
-$sidebar-dark-submenu-hover-color: #9a94a7;
-$sidebar-dark-menu-icon-color: $sidebar-dark-menu-color;
-$sidebar-dark-profile-name-color: #ffffff;
-$sidebar-dark-profile-title-color: #8d9498; 
+$white: #fff !default;
+$gray-100: #f8f9fc !default;
+$gray-200: #eaecf4 !default;
+$gray-300: #dddfeb !default;
+$gray-400: #d1d3e2 !default;
+$gray-500: #b7b9cc !default;
+$gray-600: #858796 !default;
+$gray-700: #6e707e !default;
+$gray-800: #5a5c69 !default;
+$gray-900: #3a3b45 !default;
+$black: #000 !default;
 
+$blue: #4e73df !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #e74a3b !default;
+$orange: #fd7e14 !default;
+$yellow: #f6c23e !default;
+$green: #1cc88a !default;
+$teal: #20c9a6 !default;
+$cyan: #36b9cc !default;
 
-$sidebar-light-category-color: #404040;
-$sidebar-nav-category-border-color:rgba(255, 255, 255, 0.13);
+// Custom Colors
+$brand-google: #ea4335 !default;
+$brand-facebook: #3b5998 !default;
 
-$sidebar-dark-category-color: #fff;
+// Set Contrast Threshold
+$yiq-contrasted-threshold: 195 !default;
 
-$sidebar-menu-font-size: 14px;
-$sidebar-menu-padding-left: 35px;
-$sidebar-menu-padding-right: 35px;
-$sidebar-menu-padding-top: 10px;
-$sidebar-menu-padding-bottom: 10px;
+// Typography
+$body-color: $gray-600 !default;
 
-$sidebar-submenu-padding: .25rem 0 0 3.07rem;
-$sidebar-submenu-font-size: 12px;
-$sidebar-submenu-item-padding: .7rem 1rem;
+$font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
 
-$sidebar-icon-font-size:  22px;
-$sidebar-arrow-font-size: .625rem;
+$font-weight-light: 300 !default;
+// $font-weight-base: 400;
+$headings-font-weight: 400 !default;
 
-$sidebar-profile-bg: transparent;
-$sidebar-profile-padding: 0 1.625rem 2.25rem 1.188rem;
+// Shadows
+$box-shadow-sm: 0 0.125rem 0.25rem 0 rgba($gray-900, .2) !default;
+$box-shadow: 0 0.15rem 1.75rem 0 rgba($gray-900, .15) !default;
+// $box-shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
 
-$sidebar-mini-menu-padding: .8125rem 1rem .8125rem 1rem;
+// Borders Radius
+$border-radius: 0.35rem !default;
+$border-color: darken($gray-200, 2%) !default;
 
-$sidebar-icon-only-bg :#fff;
-$sidebar-icon-only-menu-padding: .5rem 1.625rem .5rem 1.188rem;
-$sidebar-icon-only-submenu-padding: 0 0 0 1.5rem;
+// Spacing Variables
+// Change below variable if the height of the navbar changes
+$topbar-base-height: 4.375rem !default;
+// Change below variable to change the width of the sidenav
+$sidebar-base-width: 14rem !default;
+// Change below variable to change the width of the sidenav when collapsed
+$sidebar-collapsed-width: 6.5rem !default;
 
-$sidebar-icon-only-light-color :rgba($primary, .7);
+// Card
+$card-cap-bg: $gray-100 !default;
+$card-border-color: $border-color !default;
 
-$sidebar-box-shadow: 6px 16px 31px -18px #b7bcd1;
+// Adjust column spacing for symmetry
+$spacer: 1rem !default;
+$grid-gutter-width: $spacer * 1.5 !default;
 
-$rtl-sidebar-submenu-padding: 0 4.5rem 0 0;
+// Transitions
+$transition-collapse: height .15s ease !default;
 
-$icon-only-collapse-width: 190px;
-$icon-only-menu-bg-light: #fff;
-$icon-only-menu-bg-dark: $sidebar-dark-bg;
+// Dropdowns
+$dropdown-font-size: 0.85rem !default;
+$dropdown-border-color: $border-color !default;
 
-///////// SIDEBAR ////////
-
-///////// BOXED LAYOUT ///////
-$boxed-container-width: 1200px;
-$boxed-layout-bg: #c6c8ca;
-///////// BOXED LAYOUT ///////
-
-///////// SETTINGS PANEL ////////
-
-$settings-panel-width: 300px;
-
-///////// NAVBAR ////////
-$navbar-default-bg: #F4F5F7;
-$navbar-height: 97px;
-$navbar-height-small: 70px;
-$navbar-menu-color: #6C7383;
-$navbar-font-size: $sidebar-menu-font-size;
-$navbar-icon-font-size: 1.625rem;
-$navbar-link-color: #212121;
-$navbar-menu-icon-color:#212121;
-///////// NAVBAR //////// 
-$gray:             #434a54;
-
-$sidebar-purple-active-color: $purple;
+// Images
+$login-image: 'https://source.unsplash.com/K4mSJ7kc0As/600x800' !default;
+$register-image: 'https://source.unsplash.com/Mv9hjnEUHR4/600x800' !default;
+$password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;
