@@ -1,68 +1,61 @@
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
+        </div>
+        <!-- End of Content Wrapper -->
 
-       <!--   Core JS Files   -->
-    <script src="{{URL::asset ('admin/assets/js/core/jquery-3.7.1.min.js')}}"></script>
-    <script src="{{URL::asset ('admin/assets/js/core/popper.min.js')}}"></script>
-    <script src="{{URL::asset ('admin/assets/js/core/bootstrap.min.js')}}"></script>
+    </div>
+    <!-- End of Page Wrapper -->
 
-    <!-- jQuery Scrollbar -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-    <!-- Chart JS -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/chart.js/chart.min.js')}}"></script>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- jQuery Sparkline -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ URL::asset ('admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ URL::asset ('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    <!-- Chart Circle -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/chart-circle/circles.min.js')}}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{ URL::asset ('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-    <!-- Datatables -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/datatables/datatables.min.js')}}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{ URL::asset ('admin/js/sb-admin-2.min.js')}}"></script>
 
-    <!-- Bootstrap Notify -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+    <!-- Page level plugins -->
+    <script src="{{ URL::asset ('admin/vendor/chart.js/Chart.min.js')}}"></script>
 
-    <!-- jQuery Vector Maps -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/jsvectormap/jsvectormap.min.js')}}"></script>
-    <script src="{{URL::asset ('admin/assets/js/plugin/jsvectormap/world.js')}}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{ URL::asset ('admin/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{ URL::asset ('admin/js/demo/chart-pie-demo.js')}}"></script>
 
-    <!-- Sweet Alert -->
-    <script src="{{URL::asset ('admin/assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+</body>
 
-    <!-- Kaiadmin JS -->
-    <script src="{{URL::asset ('admin/assets/js/kaiadmin.min.js')}}"></script>
-
-    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="{{URL::asset ('admin/assets/js/setting-demo.js')}}"></script>
-    <script src="{{URL::asset ('admin/assets/js/demo.js')}}"></script>
-    <script>
-      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
-        type: "line",
-        height: "70",
-        width: "100%",
-        lineWidth: "2",
-        lineColor: "#177dff",
-        fillColor: "rgba(23, 125, 255, 0.14)",
-      });
-
-      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
-        type: "line",
-        height: "70",
-        width: "100%",
-        lineWidth: "2",
-        lineColor: "#f3545d",
-        fillColor: "rgba(243, 84, 93, .14)",
-      });
-
-      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
-        type: "line",
-        height: "70",
-        width: "100%",
-        lineWidth: "2",
-        lineColor: "#ffa534",
-        fillColor: "rgba(255, 165, 52, .14)",
-      });
-    </script>
-  </body>
 </html>
