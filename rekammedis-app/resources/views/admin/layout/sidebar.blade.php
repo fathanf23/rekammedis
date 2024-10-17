@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="{{URL::asset ('admin/assets/img/kaiadmin/favicon.ico')}}" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="{{URL::asset ('admin/assets/js/plugin/webfont/webfont.min.js')}}"></script>
+  
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{URL::asset ('admin/assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{URL::asset ('admin/assets/css/plugins.min.css')}}" />
+    <link rel="stylesheet" href="{{URL::asset ('admin/assets/css/kaiadmin.min.css')}}" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="{{URL::asset ('admin/assets/css/demo.css')}}" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar" data-background-color="dark">
+            <div class="sidebar-logo">
+                <!-- Logo Header -->
+                <div class="logo-header" data-background-color="dark">
+                    <a href="{{url('/')}}" class="logo">
+                        <img src="{{URL::asset ('admin/assets/img/klinikkita.png')}}" alt="navbar brand" class="navbar-brand"
+                            height="200" />
+                    </a>
+                    <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                            <i class="gg-menu-right"></i>
+                        </button>
+                        <button class="btn btn-toggle sidenav-toggler">
+                            <i class="gg-menu-left"></i>
+                        </button>
+                    </div>
+                    <button class="topbar-toggler more">
+                        <i class="gg-more-vertical-alt"></i>
+                    </button>
+                </div>
+                <!-- End Logo Header -->
+            </div>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav nav-secondary">
+                      <li class="nav-item active">
+                        <a href="{{url('/')}}" class="collapsed">
+                        <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Components</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#base">
+                                <i class="fas fa-layer-group"></i>
+                                <p>Master Data</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="base">
+                        <a class="collapse-item" href="{{url('admin/pasien/index')}}">Data Pasien</a>
+                        <a class="collapse-item" href="{{url('admin/pemeriksaan/index')}}">Data Pemeriksaan</a>
+                        <a class="collapse-item" href="{{url('admin/pendaftaran/index')}}">Data Pendaftaran</a>
+                        <a class="collapse-item" href="{{url('admin/layanan/index')}}">Data Layanan Klinik</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar -->
