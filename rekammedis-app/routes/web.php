@@ -7,6 +7,8 @@ use App\Http\Controllers\PemeriksaanController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\HasilPeriksaController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\KlinikController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -21,11 +23,19 @@ use App\Http\Controllers\DiagnosaController;
 */
 
 Route::get('/', function () {
-    return view('admin/dashboard');
+    return view('auth/login');
 });
+  // Login
+  Route::get('/login', [LoginController::class, 'index'])->name('login');
+  Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
     // Routing Pasien
     Route::get('/admin/pasien/index', [PasienController::class, 'index']);
     Route::get('/admin/pasien/create', [PasienController::class, 'create']);
+    Route::post('/admin/pasien/store', [PasienController::class, 'store']);
+    Route::get('/admin/pasien/destroy/{id}', [PasienController::class, 'destroy']);
+    Route::get('/admin/pasien/edit/{id}', [PasienController::class, 'edit']);
+    Route::post('/admin/pasien/update/{id}', [PasienController::class, 'update']);
+
 
     // Routing Pendaftaran
     Route::get('/admin/pendaftaran/index', [PendaftaranController::class, 'index']);
@@ -43,3 +53,9 @@ Route::get('/', function () {
 
     // Routing Diagnosa
     Route::get('/admin/diagnosa/index', [DiagnosaController::class, 'index']);
+
+
+    // AUTH
+    Route::get('/auth/registrasi', [KlinikController::class, 'create']);
+    Route::post('/admin/klinik/store', [KlinikController::class, 'store']);
+  

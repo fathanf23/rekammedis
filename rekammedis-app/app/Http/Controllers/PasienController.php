@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pasien;
+use DB;
 
 class PasienController extends Controller
 {
@@ -21,6 +22,7 @@ class PasienController extends Controller
      */
     public function create()
     {
+        $pasien = Pasien::get();
         return view('admin.pasien.create');
     }
 
@@ -30,6 +32,13 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('pasien')->insert([
+            'nm_pasien' => $request->input('nm_pasien'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'tgl_lahir' => $request->input('tgl_lahir'),
+        ]);
+        return redirect('admin/pasien/index')->with('success', 'Berhasil Menambahkan Data Pasien!');
     }
 
     /**
@@ -46,6 +55,8 @@ class PasienController extends Controller
     public function edit(string $id)
     {
         //
+        $pasien = Pasien::all()->where('id', $id);
+        return view('admin.pasien.edit', compact('pasien'));
     }
 
     /**
@@ -53,7 +64,14 @@ class PasienController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::table('pasien')->where('id', $id)->update([
+            'nm_pasien' => $request->input('nm_pasien'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'tgl_lahir' => $request->input('tgl_lahir'),
+            
+            ]);
+            return redirect('admin/pasien/index');
     }
 
     /**
@@ -61,6 +79,8 @@ class PasienController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pasien = Pasien::where('id', $id)->first();
+        $pasien->delete();
+        return redirect("admin/pasien/index")->with('success', 'Data Pasien Berhasil Dihapus!');
     }
 }

@@ -19,35 +19,11 @@
         </div>
     </div>
     <div class="form-group row text-primary font-weight-bold">
-        <label for="text1" class="col-4 col-form-label">No Telepon</label>
+        <label for="text1" class="col-4 col-form-label">Nama Pasien</label>
         <div class="col-8">
-            <input id="text1" name="no_tlp" placeholder="Masukan Nomor Telepon Pasien" type="text"
-                class="form-control @error('no_tlp') is-invalid @enderror">
+            <input id="text1" name="nm_pasien" placeholder="Masukan Nama Anda" type="text"
+                class="form-control @error('nm_pasien') is-invalid @enderror">
             @error('no_tlp')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row text-primary font-weight-bold">
-        <label for="text1" class="col-4 col-form-label">Alamat</label>
-        <div class="col-8">
-            <input id="text1" name="alamat" placeholder="Masukan Alamat Pasien" type="text"
-                class="form-control @error('alamat') is-invalid @enderror">
-            @error('alamat')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row text-primary font-weight-bold">
-        <label for="text1" class="col-4 col-form-label">Tanggal Lahir Pasien (Opsional)</label>
-        <div class="col-8">
-            <input id="text1" name="tgl_lahir" placeholder="Masukan Nomor Telepon Pasien" type="date"
-                class="form-control @error('tgl_lahir') is-invalid @enderror">
-            @error('tgl_lahir')
             <div class="invalid-feedback">
                 {{$message}}
             </div>
