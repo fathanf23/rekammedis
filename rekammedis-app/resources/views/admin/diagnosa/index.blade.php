@@ -5,7 +5,7 @@
 <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Layanan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Diagnosa</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -13,26 +13,25 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Layanan</th>
-                                            <th>Harga Layanan</th>
+                                            <th>Kode Diagnosa</th>
+                                            <th>Diagnosa</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                         <th>No</th>
-                                            <th>Nama Layanan</th>
-                                            <th>Harga Layanan</th>
+                                            <th>Kode Diagnosa</th>
+                                            <th>Diagnosa</th>
                                             <th>Aksi</th>
-
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($layanan as $l)
+                                        @foreach($diagnosa as $d)
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
-                                            <td>{{$l->nm_layanan}}</td>
-                                            <td>{{$l->harga_layanan}}</td>
+                                            <td>{{$d->kd_diagnosa}}</td>
+                                            <td>{{$d->diagnosa}}</td>
                                             <td>Edit/Delete</td>
                                         </tr>
                                         @endforeach

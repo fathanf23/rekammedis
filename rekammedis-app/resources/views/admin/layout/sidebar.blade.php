@@ -12,7 +12,7 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{URL::asset ('admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css')}}">
+    <link href="{{URL::asset ('admin/vendor/fontawesome-free/css/all.min.css')}}"" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
           <!-- Sidebar - Brand -->
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/')}}">
-              <img src="{{URL::asset('admin/img/klinikkita1.png')}}" width="200" alt="" srcset="">
+              <img src="{{URL::asset('admin/img/klinikkita1.png')}}" width="150" alt="" srcset="">
               <div class="sidebar-brand-icon rotate-n-15">
               </div>
               <div class="sidebar-brand-text mx-3">
@@ -52,23 +52,7 @@
                 Interface
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <span>Master Data<i class="fas fa-caret-down"></i></span>
-                </a>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pilih Tabel:</h6>
-                        <a class="collapse-item" href="{{url('admin/pasien/index')}}">Data Pasien</a>
-                        <a class="collapse-item" href="{{url('admin/pendaftaran/index')}}">Data Pendaftaran</a>
-                        <a class="collapse-item" href="{{url('admin/pemeriksaan/index')}}">Data Pemeriksaan</a>
-                    </div>
-                </div>
-            </li>
-
+            
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -84,6 +68,27 @@
                         <a class="collapse-item" href="utilities-border.html">Borders</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-table" aria-hidden="true"></i>
+                    <span>Master Data</span>
+                </a>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tabel :</h6>
+                        <a class="collapse-item" href="{{url('admin/pasien/index')}}"><i class="fa fa-users" aria-hidden="true"></i> Data Pasien</a>
+                        <a class="collapse-item" href="{{url('admin/pendaftaran/index')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> Data Pendaftaran</a>
+                        <a class="collapse-item" href="{{url('admin/pemeriksaan/index')}}"><i class="fa fa-user-md" aria-hidden="true"></i> Data Pemeriksaan</a>
+                        <a class="collapse-item" href="{{url('admin/layanan/index')}}"><i class="fa fa-server" aria-hidden="true"></i> Data Layanan</a>
+                        <a class="collapse-item" href="{{url('admin/diagnosa/index')}}"><i class="fas fa-diagnoses"></i> Data Diagnosa</a>
+                        <a class="collapse-item" href="{{url('admin/hasil_periksa/index')}}"><i class="fas fa-sticky-note"></i> Data Hasil Pemeriksaan</a>
                     </div>
                 </div>
             </li>

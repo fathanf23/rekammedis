@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasilPeriksa;
 use Illuminate\Http\Request;
-use App\Models\Pasien;
 
-class PasienController extends Controller
+class HasilPeriksaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pasien = Pasien::get()->all();
-        return view('admin.pasien.index', compact('pasien'));
+        $hp = HasilPeriksa::get()->all();
+        return view('admin.hasil_periksa.index', compact('hp'));
     }
 
     /**
@@ -21,7 +21,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        return view('admin.pasien.create');
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class PasienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(HasilPeriksa $hasilPeriksa)
     {
         //
     }
@@ -43,7 +43,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(HasilPeriksa $hasilPeriksa)
     {
         //
     }
@@ -51,7 +51,7 @@ class PasienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, HasilPeriksa $hasilPeriksa)
     {
         //
     }
@@ -59,7 +59,7 @@ class PasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(HasilPeriksa $hasilPeriksa)
     {
         //
     }

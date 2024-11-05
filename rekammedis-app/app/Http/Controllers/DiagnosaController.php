@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosa;
 use Illuminate\Http\Request;
-use App\Models\Pasien;
 
-class PasienController extends Controller
+class DiagnosaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pasien = Pasien::get()->all();
-        return view('admin.pasien.index', compact('pasien'));
+        //
+        $diagnosa = Diagnosa::get();
+        return view('admin.diagnosa.index', compact('diagnosa'));
     }
 
     /**
@@ -21,7 +22,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        return view('admin.pasien.create');
+        //
     }
 
     /**
@@ -35,7 +36,7 @@ class PasienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Diagnosa $diagnosa)
     {
         //
     }
@@ -43,7 +44,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Diagnosa $diagnosa)
     {
         //
     }
@@ -51,7 +52,7 @@ class PasienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Diagnosa $diagnosa)
     {
         //
     }
@@ -59,7 +60,7 @@ class PasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Diagnosa $diagnosa)
     {
         //
     }
