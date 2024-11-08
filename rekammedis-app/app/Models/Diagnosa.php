@@ -11,5 +11,8 @@ class Diagnosa extends Model
     protected $table = 'diagnosa';
     protected $fillable = ['kd_diagnosa', 'diagnosa'];
     public $timestamps = false;
-
+    public function hasil_periksa()
+    {
+        return $this->hasOne(HasilPeriksa::class);
+    }
 }

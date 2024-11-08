@@ -11,5 +11,10 @@ class Layanan extends Model
     protected $table = 'layanan';
     protected $fillable = ['nm_layanan', 'harga_layanan'];
     public $timestamps = false;
-    
+
+    public function hasil_periksa()
+    {
+        return $this->hasOne(HasilPeriksa::class);
+    }
+
 }

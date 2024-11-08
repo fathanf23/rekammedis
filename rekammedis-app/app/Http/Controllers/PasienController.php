@@ -71,7 +71,7 @@ class PasienController extends Controller
             'tgl_lahir' => $request->input('tgl_lahir'),
             
             ]);
-            return redirect('admin/pasien/index');
+            return redirect('admin/pasien/index')->with('success', 'Data Pasien Berhasil Diubah!');
     }
 
     /**

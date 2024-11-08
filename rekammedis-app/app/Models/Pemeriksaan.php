@@ -14,4 +14,8 @@ class Pemeriksaan extends Model
     public function pendaftaran(){
         return $this->belongsTo(Pendaftaran::class);
     }
+    public function hasilPeriksa()
+{
+    return $this->hasMany(HasilPeriksa::class);
+}
 }

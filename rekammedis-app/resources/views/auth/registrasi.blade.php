@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{URL::asset ('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
     body {
         background-image: url('{{ URL::asset('admin/img/bg.jpg') }}');
@@ -41,18 +42,23 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        width: 300%;
-        max-width: 400px;
+        width: 200%;
+        max-width: 500px;
     }
     </style>
 </head>
 
 <body>
-    <div>
-        <form method="POST" class="login-form" action="{{url('/admin/klinik/store')}}">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('admin/img/klinikkita.png')}}" class="img-fluid" width="200px"
+                    alt="..." /></a>
+        </div>
+    </nav>
+        <form method="POST" class="login-form" action="{{url('/admin/user/store')}}">
             @csrf
             <!-- Email input -->
-            <h1 class="display-5 font-weight-bold text-center text-primary">Login</h1>
+            <h1 class="display-5 font-weight-bold text-center text-primary">Registrasi</h1>
             <hr>
             <div data-mdb-input-init class="form-outline mb-2">
                 <div class="form-group row text-primary font-weight-bold">
@@ -65,7 +71,7 @@
                 <div class="form-group row text-primary font-weight-bold">
                     <label for="text1" class="col-4 col-form-label">Password</label>
                     <div class="col-8">
-                        <input id="text1" name="password" placeholder="Masukan Password Anda!" type="text"
+                        <input id="text1" name="password" placeholder="Masukan Password Anda!" type="password"
                             class="form-control @error('password') is-invalid @enderror">
                     </div>
                 </div>
@@ -81,7 +87,14 @@
                     <p>Sudah Punya Akun? <a href="{{url('/')}}">Login Disini!</a></p>
                 </div>
         </form>
-    </div>
 </body>
-
+@if(session('success'))
+<script>
+Swal.alert({
+    title: 'Berhasil!',
+    text: "{{ session('success') }}",
+    icon: 'success',
+});
+</script>
+@endif
 </html>

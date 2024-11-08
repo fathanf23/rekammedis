@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pasien;
-class DashboardController extends Controller
+
+class DokterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $total_pasien = Pasien::count();
-        return view('admin.dashboard', compact('total_pasien'));
+        return view('dokter/dashboard');
     }
 
     /**

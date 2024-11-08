@@ -2,7 +2,7 @@
 @section('content')
 
 @foreach($pasien as $p)
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <form method="POST" action="{{url('admin/pasien/update/'. $p->id)}}" enctype="multipart/form-data">
     @csrf
     <div class="card-header py-3 mb-2">

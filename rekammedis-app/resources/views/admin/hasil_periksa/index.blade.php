@@ -32,8 +32,8 @@
                                         @foreach($hp as $hp)
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
-                                            <td>{{$hp->layanan_id}}</td>
-                                            <td>{{$hp->diagnosa_id}}</td>
+                                            <td>{{$hp->layanan->nm_layanan}}</td>
+                                            <td>{{$hp->diagnosa->diagnosa}}</td>
                                             <td>{{$hp->pemeriksaan_id}}</td>
                                             <td>Edit/Delete</td>
                                         </tr>

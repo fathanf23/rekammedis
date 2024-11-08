@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\HasilPeriksa;
+use App\Models\Layanan;
+use App\Models\Diagnosa;
+use App\Models\Pemeriksaan;
 use Illuminate\Http\Request;
+use DB;
 
 class HasilPeriksaController extends Controller
 {
@@ -13,6 +17,7 @@ class HasilPeriksaController extends Controller
     public function index()
     {
         $hp = HasilPeriksa::get()->all();
+        
         return view('admin.hasil_periksa.index', compact('hp'));
     }
 

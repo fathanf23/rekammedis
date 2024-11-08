@@ -12,18 +12,22 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{URL::asset ('admin/vendor/fontawesome-free/css/all.min.css')}}"" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset ('admin/vendor/fontawesome-free/css/all.min.css')}}"" rel=" stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Link Bootstrap -->
     <!-- Bootstrap JS (untuk Bootstrap 5) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
 
     <!-- Custom styles for this template-->
     <link href="{{URL::asset ('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body id="page-top">
@@ -33,14 +37,14 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-          <!-- Sidebar - Brand -->
-          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/')}}">
-              <img src="{{URL::asset('admin/img/klinikkita1.png')}}" width="150" alt="" srcset="">
-              <div class="sidebar-brand-icon rotate-n-15">
-              </div>
-              <div class="sidebar-brand-text mx-3">
-              </div>
-          </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/admin/dashboard')}}">
+                <img src="{{URL::asset('admin/img/klinikkita1.png')}}" class="img-fluid" width="150" alt="" srcset="">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                </div>
+            </a>
 
 
             <!-- Divider -->
@@ -56,7 +60,7 @@
                 Interface
             </div>
 
-            
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -67,8 +71,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
+                        <h6 class="collapse-header">Pendaftaran</h6>
+                        <a class="collapse-item" href="{{url('admin/pendaftaran/daftar')}}">Pendaftaran Pasien</a>
                         <a class="collapse-item" href="utilities-border.html">Borders</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -78,8 +82,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fa fa-table" aria-hidden="true"></i>
                     <span>Master Data</span>
                 </a>
@@ -87,12 +91,18 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tabel :</h6>
-                        <a class="collapse-item" href="{{url('admin/pasien/index')}}"><i class="fa fa-users" aria-hidden="true"></i> Data Pasien</a>
-                        <a class="collapse-item" href="{{url('admin/pendaftaran/index')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> Data Pendaftaran</a>
-                        <a class="collapse-item" href="{{url('admin/pemeriksaan/index')}}"><i class="fa fa-user-md" aria-hidden="true"></i> Data Pemeriksaan</a>
-                        <a class="collapse-item" href="{{url('admin/layanan/index')}}"><i class="fa fa-server" aria-hidden="true"></i> Data Layanan</a>
-                        <a class="collapse-item" href="{{url('admin/diagnosa/index')}}"><i class="fas fa-diagnoses"></i> Data Diagnosa</a>
-                        <a class="collapse-item" href="{{url('admin/hasil_periksa/index')}}"><i class="fas fa-sticky-note"></i> Data Hasil Pemeriksaan</a>
+                        <a class="collapse-item" href="{{url('admin/pasien/index')}}"><i class="fa fa-users"
+                                aria-hidden="true"></i> Data Pasien</a>
+                        <a class="collapse-item" href="{{url('admin/pendaftaran/index')}}"><i class="fa fa-user-plus"
+                                aria-hidden="true"></i> Data Pendaftaran</a>
+                        <a class="collapse-item" href="{{url('admin/pemeriksaan/index')}}"><i class="fa fa-user-md"
+                                aria-hidden="true"></i> Data Pemeriksaan</a>
+                        <a class="collapse-item" href="{{url('admin/layanan/index')}}"><i class="fa fa-server"
+                                aria-hidden="true"></i> Data Layanan</a>
+                        <a class="collapse-item" href="{{url('admin/diagnosa/index')}}"><i class="fas fa-diagnoses"></i>
+                            Data Diagnosa</a>
+                        <a class="collapse-item" href="{{url('admin/hasil_periksa/index')}}"><i
+                                class="fas fa-sticky-note"></i> Data Hasil Pemeriksaan</a>
                     </div>
                 </div>
             </li>
@@ -277,7 +287,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                {{ Auth::user()->username }}
+                               
+                                </span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -296,10 +309,12 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-danger">Logout</button>
+                                    </div>
+                                </form>
                             </div>
                         </li>
 
