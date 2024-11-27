@@ -20,10 +20,10 @@
                     <tr>
                         <th>No</th>
                         <th>Nomor Daftar</th>
+                        <th>Nama Pasien</th>
                         <th>Keluhan</th>
                         <th>Riwayat</th>
                         <th>Pembayaran</th>
-                        <th>Nama Pasien</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -31,10 +31,10 @@
                     <tr>
                         <th>No</th>
                         <th>Nomor Daftar</th>
+                        <th>Nama Pasien</th>
                         <th>Keluhan</th>
                         <th>Riwayat</th>
                         <th>Pembayaran</th>
-                        <th>Nama Pasien</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -43,10 +43,10 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$p->no_pendaftaran}}</td>
+                        <td>{{$p->pasien->nm_pasien}}</td>
                         <td>{{$p->keluhan}}</td>
                         <td>{{$p->riwayat_rm}}</td>
                         <td>{{$p->pembayaran}}</td>
-                        <td>{{$p->pasien->nm_pasien}}</td>
                         <td>
                         <!-- Tombol Delete -->
                         <a href="#" class="btn btn-md btn-danger px-2" data-bs-toggle="modal"

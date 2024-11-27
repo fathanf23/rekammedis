@@ -37,6 +37,7 @@ use App\Http\Controllers\DiagnosaController;
 
     // Blokir akses (Middleware)
     Route::group(['middleware' => ['auth']], function() {
+      
     // Memilih Role
     Route::get('/selectrole', [LoginController::class, 'selectrole']);
     // Dokter Dashboard

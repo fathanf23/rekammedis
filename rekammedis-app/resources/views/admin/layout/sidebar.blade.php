@@ -73,8 +73,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pendaftaran</h6>
                         <a class="collapse-item" href="{{url('admin/pendaftaran/daftar')}}">Pendaftaran Pasien</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-border.html">Layanan/Jasa</a>
+                        <a class="collapse-item" href="utilities-animation.html">Obat</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
