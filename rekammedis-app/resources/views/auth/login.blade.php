@@ -24,35 +24,57 @@
     <link href="{{URL::asset ('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-    body {
-        background-image: url('{{ URL::asset('admin/img/bg1.jpg') }}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        body {
+            background-image: url('{{ URL::asset('admin/img/bg1.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .login-form {
-        background-color: rgba(255, 255, 255, 0.8);
-        /* Buat latar belakang form sedikit transparan */
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        width: 300%;
-        max-width: 400px;
-    }
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 300%;
+            max-width: 400px;
+        }
+
+        .login-form h1 {
+            color: #00747c;
+        }
+
+        .btn-primary {
+            background-color: #00747c;
+            border-color: #00747c;
+        }
+
+        .btn-primary:hover {
+            background-color: #005f64;
+            border-color: #005f64;
+        }
+
+        .display-5 {
+    color: #00747c !important; /* Menimpa warna bawaan Bootstrap */
+}
+
+.text-center p a {
+    color: #00747c !important; /* Menimpa warna bawaan Bootstrap */
+}
+
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('admin/img/klinikkita.png')}}" class="img-fluid" width="200px"
-                    alt="..." /></a>
+            <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('admin/img/klinikkita.png')}}"
+                    class="img-fluid" width="200px" alt="..." /></a>
         </div>
     </nav>
     <form class="login-form" method="POST" action="{{ route('login_proses') }}">
@@ -83,22 +105,23 @@
 </body>
 @if(session('failed'))
 <script>
-Swal.fire({
-    title: 'Gagal!',
-    text: "{{ session('failed') }}",
-    icon: 'error',
+    Swal.fire({
+        title: 'Gagal!',
+        text: "{{ session('failed') }}",
+        icon: 'error',
 
-});
+    });
 </script>
 @endif
 @if(session('success'))
 <script>
-Swal.fire({
-    title: 'Berhasil!',
-    text: "{{ session('success') }}",
-    icon: 'success',
+    Swal.fire({
+        title: 'Berhasil!',
+        text: "{{ session('success') }}",
+        icon: 'success',
 
-});
+    });
 </script>
 @endif
+
 </html>
