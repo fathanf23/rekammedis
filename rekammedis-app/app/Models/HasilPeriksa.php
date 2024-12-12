@@ -14,14 +14,14 @@ class HasilPeriksa extends Model
 
     public function diagnosa()
     {
-        return $this->belongsTo(Diagnosa::class);
+        return $this->belongsTo(Diagnosa::class, 'diagnosa_id');
     }
     public function layanan()
     {
-        return $this->belongsTo(Layanan::class);
+        return $this->belongsTo(Layanan::class, 'layanan_id');
     }
-    public function periksa()
+    public function pemeriksaan()
     {
-        return $this->belongsTo(Pemeriksaan::class);
+        return $this->belongsTo(Pemeriksaan::class, 'pemeriksaan_id');
     }
 }

@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="m-2">
             <a href="{{ url('/admin/pasien/create') }}" class="btn bg-primary d-flex align-items-center"
-                style="width: 200px;">
+                style="width: fit-content;">
                 <i class="fas fa-plus text-white mr-2"></i>
                 <span class="text-white font-weight-bold">Tambah Pasien</span>
             </a>

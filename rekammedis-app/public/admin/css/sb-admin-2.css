@@ -58,6 +58,10 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -68,6 +72,7 @@ body {
   color: #858796;
   text-align: left;
   background-color: #fff;
+  
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -9782,30 +9787,32 @@ a.text-dark:hover, a.text-dark:focus {
 
 html {
   position: relative;
-  min-height: 100%;
+
 }
 
 body {
   height: 100%;
+
 }
 
 a:focus {
   outline: none;
 }
 
+/* Mengatur wrapper utama untuk menghilangkan scrollbar */
 #wrapper {
   display: flex;
 }
 
 #wrapper #content-wrapper {
   background-color: #f8f9fc;
-  width: 100%;
-  overflow-x: hidden;
+  display: auto;
 }
 
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
 }
+
 
 .container,
 .container-fluid,

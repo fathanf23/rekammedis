@@ -16,9 +16,9 @@ class HasilPeriksaController extends Controller
      */
     public function index()
     {
-        $hp = HasilPeriksa::get()->all();
-        
+        $hp = HasilPeriksa::with(['layanan', 'diagnosa', 'pemeriksaan'])->get();
         return view('admin.hasil_periksa.index', compact('hp'));
+
     }
 
     /**
@@ -64,8 +64,10 @@ class HasilPeriksaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HasilPeriksa $hasilPeriksa)
+    public function destroy(String $id)
     {
-        //
+        $hasilPeriksa = HasilPeriksa::where('id', $id)->first();
+        $hasilPeriksa->delete();
+        return redirect('admin/hasil_periksa/index')->with('success', 'Data Periksa Berhasil Dihapus!');
     }
 }

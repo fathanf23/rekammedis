@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Pasien;
+use App\Models\Pendaftaran;
+use App\Models\Layanan;
+use App\Models\Pemeriksaan;
 class DokterController extends Controller
 {
     /**
@@ -11,7 +14,12 @@ class DokterController extends Controller
      */
     public function index()
     {
-        return view('dokter/dashboard');
+        $total_pasien = Pasien::count();
+        $total_daftar = Pendaftaran::count();
+        $total_layanan = Layanan::count();
+        $total_periksa = Pemeriksaan::count();
+        return view('dokter.dashboard', compact('total_pasien', 'total_daftar', 'total_layanan', 'total_periksa'));
+       
     }
 
     /**

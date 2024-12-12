@@ -5,31 +5,81 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
 use App\Models\Pasien;
+use App\Models\Layanan;
+use App\Models\Diagnosa;
 use DB;
 class PendaftaranController extends Controller
 {
-    public function daftar()
+    // Dokter
+    public function indexdaftar()
     {
-        $pendaftaran = Pendaftaran::get();
+        $pendaftaran = Pendaftaran::orderBy('id', 'desc')->get();
         $pasien = Pasien::get();
-        return view('admin.pendaftaran.daftar', compact('pendaftaran', 'pasien'));
+        $layanan = Layanan::all();
+        return view('dokter.pendaftaran.index', compact('pendaftaran', 'layanan', 'pasien'));
     }
+    public function periksa(string $id)
+    {
+        $pendaftaran = Pendaftaran::all()->where('id', $id);
+        $layanan = Layanan::all();
+        $diagnosa = Diagnosa::all();
+        return view('dokter.pendaftaran.periksa', compact('pendaftaran', 'diagnosa','layanan'));
+    }
+    public function DokterStore(Request $request)
+{
+    // dd($request->all());
+    $pemeriksaan = DB::table('pemeriksaan')->insertGetId([
+        'status_periksa' => 'Sedang Diperiksa',
+        'keterangan_tambahan' => $request->keterangan_tambahan,
+        'harga_akhir' => $request->harga_akhir,
+        'anamnesia' => $request->anamnesia,
+        'alergi' => $request->alergi,
+        'pendaftaran_id' => $request->pendaftaran_id, // ID pendaftaran yang diterima
+    ]); 
+
+    if ($request->has('layanan')) {
+        foreach ($request->layanan as $layananId) {
+            DB::table('hasil_periksa')->insert([
+                'pemeriksaan_id' => $pemeriksaan, // ID pemeriksaan yang baru disimpan
+                'layanan_id' => $layananId,
+                'diagnosa_id' => null, // ID layanan yang dipilih
+            ]);
+        }
+    }
+
+    // Simpan diagnosa yang dipilih ke tabel hasil_periksa
+    if ($request->has('diagnosa')) {
+        foreach ($request->diagnosa as $diagnosaId) {
+            DB::table('hasil_periksa')->insert([
+                'pemeriksaan_id' => $pemeriksaan, // ID pemeriksaan
+                'diagnosa_id' => $diagnosaId,
+                'layanan_id' => null, 
+            ]);
+        }
+    }
+
+    return redirect('dokter/pendaftaran/index')->with('success', 'Data Periksa berhasil disimpan!');
+}
+
+
+
+
+
+
+
+    // admin
     public function daftar_store(Request $request)
 {
     // Cari nomor pendaftaran terakhir
     $lastEntry = DB::table('pendaftaran')->orderBy('no_pendaftaran', 'desc')->first();
 
-    // Tentukan nomor pendaftaran baru
     if ($lastEntry) {
-        // Ambil bagian numerik dan tambahkan 1
         $lastNumber = (int)substr($lastEntry->no_pendaftaran, 1);
         $newNumber = $lastNumber + 1;
     } else {
-        // Jika belum ada data, mulai dari 1
         $newNumber = 1;
     }
 
-    // Format nomor pendaftaran dengan prefix "A" dan padding angka 0 (misalnya A001)
     $newNoPendaftaran = 'A' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
 
     // Insert data pasien dan dapatkan ID yang baru saja dimasukkan
@@ -49,7 +99,7 @@ class PendaftaranController extends Controller
         'pasien_id' => $pasien_id,
     ]);
 
-    return redirect('admin/pendaftaran/daftar')->with('success', 'Berhasil Menambahkan Data Pendaftaran!');
+    return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pendaftaran!');
 }
 
 
@@ -81,11 +131,10 @@ class PendaftaranController extends Controller
     {
         $pendaftaran = pendaftaran::where('id', $id)->first();
         $pendaftaran->delete();
-        return redirect("admin/pendaftaran/index")->with('success', 'Data Pasien Berhasil Dihapus!');
+        return redirect("admin/pendaftaran/index")->with('success', 'Data Pendaftaran Berhasil Dihapus!');
     }
     public function edit(string $id)
     {
-        //
         $pendaftaran = Pendaftaran::all()->where('id', $id);
         $pasien = Pasien::all();
         return view('admin.pendaftaran.edit', compact('pendaftaran', 'pasien'));

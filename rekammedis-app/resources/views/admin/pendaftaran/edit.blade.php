@@ -48,7 +48,7 @@
         </div>
     <div class=" d-flex justify-content-center">
         <button name="submit" type="submit" class="btn bg-primary text-white">Submit</button>
-        <a href="{{url('admin/pasien/index')}}" class="btn bg-secondary text-white ml-2"><i
+        <a href="{{url('admin/pendaftaran/index')}}" class="btn bg-secondary text-white ml-2"><i
                 class="fas fa-long-arrow-alt-left"></i>
             Back to Table</a>
     </div>

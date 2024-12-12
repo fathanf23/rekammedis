@@ -14,7 +14,7 @@ class Layanan extends Model
 
     public function hasil_periksa()
     {
-        return $this->hasOne(HasilPeriksa::class);
+        return $this->belongsToMany(HasilPeriksa::class);
     }
 
 }

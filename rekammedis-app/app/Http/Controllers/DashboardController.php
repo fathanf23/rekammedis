@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pasien;
+use App\Models\Pendaftaran;
+use App\Models\Layanan;
+use App\Models\Pemeriksaan;
 class DashboardController extends Controller
 {
     /**
@@ -12,7 +15,10 @@ class DashboardController extends Controller
     public function index()
     {
         $total_pasien = Pasien::count();
-        return view('admin.dashboard', compact('total_pasien'));
+        $total_daftar = Pendaftaran::count();
+        $total_layanan = Layanan::count();
+        $total_periksa = Pemeriksaan::count();
+        return view('admin.dashboard', compact('total_pasien', 'total_periksa', 'total_layanan', 'total_daftar'));
     }
 
     /**

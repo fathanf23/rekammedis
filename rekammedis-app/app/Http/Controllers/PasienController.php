@@ -16,6 +16,11 @@ class PasienController extends Controller
         $pasien = Pasien::get()->all();
         return view('admin.pasien.index', compact('pasien'));
     }
+    public function indexdokter()
+    {
+        $pasien = Pasien::get()->all();
+        return view('dokter.pasien.indexdokter', compact('pasien'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -78,9 +83,20 @@ class PasienController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $pasien = Pasien::where('id', $id)->first();
-        $pasien->delete();
-        return redirect("admin/pasien/index")->with('success', 'Data Pasien Berhasil Dihapus!');
-    }
+{
+    // Hapus data pemeriksaan yang terkait dengan pendaftaran
+    DB::table('pemeriksaan')->whereIn('pendaftaran_id', function($query) use ($id) {
+        $query->select('id')->from('pendaftaran')->where('pasien_id', $id);
+    })->delete();
+
+    // Hapus data pendaftaran yang terkait dengan pasien
+    DB::table('pendaftaran')->where('pasien_id', $id)->delete();
+
+    // Hapus data pasien
+    $pasien = Pasien::where('id', $id)->first();
+    $pasien->delete();
+
+    return redirect('admin/pasien/index')->with('success', 'Data Pasien Berhasil Dihapus!');
+}
+
 }

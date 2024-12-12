@@ -59,18 +59,18 @@
         @csrf
         <!-- Email input -->
         <h1 class="display-5 font-weight-bold text-center text-primary">Login</h1>
-        <hr>
         <div data-mdb-input-init class="form-outline mb-2">
+            <label class="form-label" for="username">Username Kinik</label>
             <input type="text" id="username" name="username" placeholder="Masukan Username Klinik Anda!"
                 class="form-control" />
-            <label class="form-label" for="username">Username Kinik</label>
         </div>
 
         <!-- Password input -->
         <div data-mdb-input-init class="form-outline mb-2">
-            <input type="password" name="password" id="password" placeholder="Masukan Password!" class="form-control" />
             <label class="form-label" for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Masukan Password!" class="form-control" />
         </div>
+        <hr>
         <!-- Submit button -->
         <button type="submit" data-mdb-button-init data-mdb-ripple-init
             class="btn btn-primary btn-block mb-4">Login</button>

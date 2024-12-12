@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
         <div class="m-2">
-            <a href="{{ url('/admin/pendaftaran/create') }}" class="btn bg-primary d-flex align-items-center"
+            <a href="{{ url('/admin/pendaftaran/daftar') }}" class="btn bg-primary d-flex align-items-center"
                 style="width: 210px;">
                 <i class="fas fa-plus text-white mr-2"></i>
                 <span class="text-white font-weight-bold">Tambah Pendaftaran</span>

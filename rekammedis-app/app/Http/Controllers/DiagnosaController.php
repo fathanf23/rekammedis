@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Diagnosa;
 use Illuminate\Http\Request;
-
+use DB;
 class DiagnosaController extends Controller
 {
     /**
@@ -22,7 +22,7 @@ class DiagnosaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.diagnosa.create');
     }
 
     /**
@@ -30,7 +30,11 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('diagnosa')->insert([
+            'kd_diagnosa' => $request->input('kd_diagnosa'),
+            'diagnosa' => $request->input('diagnosa'),
+        ]);
+        return redirect('admin/diagnosa/index')->with('success', 'Berhasil Menambahkan Diagnosa Baru!');
     }
 
     /**
@@ -60,8 +64,10 @@ class DiagnosaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Diagnosa $diagnosa)
+    public function destroy(String $id)
     {
-        //
+        $diagnosa = Diagnosa::where('id', $id)->first();
+        $diagnosa->delete();
+        return redirect('admin/diagnosa/index')->with('success', 'Data Diagnosa Berhasil Dihapus');
     }
 }

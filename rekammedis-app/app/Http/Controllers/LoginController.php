@@ -12,25 +12,32 @@ class LoginController extends Controller
         return view('auth.login');
     }
     public function login_proses(Request $request)
-{
-    $request->validate([
-        'username' => 'required',
-        'password' => 'required',
-    ]);
-    $data = [
-        'username' => $request->username,
-        'password' => $request->password,
-    ];
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        
+        $data = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
 
-    if (Auth::attempt($data)) {
-        return redirect('/selectrole');
-    }
+        if (Auth::attempt($data)) {
+            $user = Auth::user();
 
-    return back()->with('failed', 'Username atau Password anda ada yang salah');
-}
-    public function selectrole(){
-        return view('selectrole');
+            if ($user->role == 'admin') {
+                return redirect()->route('admin');
+            } elseif ($user->role == 'dokter') {
+                return redirect()->route('dokter');
+            } else {
+                return redirect('/'); 
+            }
+        } else {
+            return redirect()->route('login')->with('failed', 'Username atau Password Salah!');
+        }
     }
+    
 public function logout(Request $request)
 {
     Auth::logout();

@@ -10,7 +10,6 @@ class Pendaftaran extends Model
     use HasFactory;
     protected $table = 'pendaftaran';
     protected $fillable = ['no_pendaftaran', 'keluhan', 'riwayat_rm', 'pembayaran'];
-    public $timestamps = false;
     public function pasien()
 {
     return $this->belongsTo(Pasien::class);
