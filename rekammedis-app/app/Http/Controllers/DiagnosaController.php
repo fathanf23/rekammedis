@@ -30,12 +30,16 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         DB::table('diagnosa')->insert([
             'kd_diagnosa' => $request->input('kd_diagnosa'),
             'diagnosa' => $request->input('diagnosa'),
         ]);
-        return redirect('admin/diagnosa/index')->with('success', 'Berhasil Menambahkan Diagnosa Baru!');
+        return redirect('admin/diagnosa/index')->with('success', 'Berhasil Menambahkan Data Diagnosa Baru!');
+    } catch (\Exception $e) {
+        return redirect('admin/diagnosa/create')->with('error', 'Gagal Menambahkan Data Diagnosa! Isi Data Dengan Benar!');
     }
+}
 
     /**
      * Display the specified resource.
@@ -48,17 +52,22 @@ class DiagnosaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Diagnosa $diagnosa)
+    public function edit(String $id)
     {
-        //
+        $diagnosa = Diagnosa::get()->where('id', $id);
+        return view('admin.diagnosa.edit', compact('diagnosa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Diagnosa $diagnosa)
+    public function update(Request $request, String $id)
     {
-        //
+        DB::table('diagnosa')->where('id', $id)->update([
+            'kd_diagnosa' => $request->input('kd_diagnosa'),
+            'diagnosa' => $request->input('diagnosa'),
+        ]);
+        return redirect('admin/diagnosa/index')->with('success', 'Data Diagnosa Berhasil Diedit!');
     }
 
     /**

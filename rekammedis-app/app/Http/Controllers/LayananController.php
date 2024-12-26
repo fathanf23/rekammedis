@@ -31,13 +31,16 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
         DB::table('layanan')->insert([
             'nm_layanan' => $request->input('nm_layanan'),
             'harga_layanan' => $request->input('harga_layanan'),
         ]);
-        return redirect('admin/layanan/index')->with('success', 'Berhasil Menambahkan Layanan Baru di Klinik!');
+        return redirect('admin/layanan/index')->with('success', 'Berhasil Menambahkan Data Layanan Baru!');
+    } catch (\Exception $e) {
+        return redirect('admin/layanan/create')->with('error', 'Gagal Menambahkan Data Layanan! Isi Dengan Benar!');
     }
+}
 
     /**
      * Display the specified resource.
@@ -50,17 +53,22 @@ class LayananController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Layanan $layanan)
+    public function edit(String $id)
     {
-        //
+        $layanan = Layanan::get()->where('id', $id);
+        return view('admin.layanan.edit', compact('layanan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Layanan $layanan)
+    public function update(Request $request, String $id)
     {
-        //
+        DB::table('layanan')->where('id', $id)->update([
+            'nm_layanan' => $request->input('nm_layanan'),
+            'harga_layanan' => $request->input('harga_layanan'),
+        ]);
+        return redirect('admin/layanan/index')->with('success', 'Layanan Berhasil Diedit!');
     }
 
     /**

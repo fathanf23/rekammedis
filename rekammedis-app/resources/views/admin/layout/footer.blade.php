@@ -55,6 +55,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ URL::asset ('admin/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{ URL::asset ('admin/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </body>
 

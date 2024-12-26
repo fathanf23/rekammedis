@@ -1,23 +1,24 @@
 @extends('admin.layout.app')
 @section('content')
 
-<form method="POST" action="{{url('/admin/layanan/store')}}" enctype="multipart/form-data">
+@foreach($layanan as $l)
+<form method="POST" action="{{url('admin/layanan/update/'. $l->id)}}" enctype="multipart/form-data">
     @csrf
     <div class="card-header py-3 mb-2">
-        <h6 class=" font-weight-bold text-primary">Tambah Data Layanan</h6>
+        <h6 class=" font-weight-bold text-primary">Update Data Layanan</h6>
     </div>
     <div class="form-group row text-primary font-weight-bold">
         <label for="text1" class="col-4 col-form-label">Nama Layanan</label>
         <div class="col-8">
-            <input id="text1" name="nm_layanan" placeholder="Masukan Nama Layanan Baru!" type="text"
-                class="form-control">
+            <input id="text1" name="nm_layanan" value="{{$l->nm_layanan}}" placeholder="Masukan Nama Layanan Baru!"
+                type="text" class="form-control">
         </div>
     </div>
     <div class="form-group row text-primary font-weight-bold">
         <label for="text1" class="col-4 col-form-label">Harga Layanan</label>
         <div class="col-8">
-            <input id="text1" name="harga_layanan" placeholder="Masukan Harga Dari Layanan Tersebut!" type="text"
-                class="form-control">
+            <input id="text1" name="harga_layanan" value="{{$l->harga_layanan}}"
+                placeholder="Masukan Harga Dari Layanan Tersebut!" type="text" class="form-control">
         </div>
     </div>
     <div class=" d-flex justify-content-center">
@@ -27,15 +28,6 @@
             Back to Table</a>
     </div>
 </form>
+@endforeach
 </main>
-@if(session('error'))
-<script>
-Swal.fire({
-    title: 'Gagal!',
-    text: "{{ session('error') }}",
-    icon: 'error',
-    confirmButtonText: 'OK'
-});
-</script>
-@endif
 @endsection

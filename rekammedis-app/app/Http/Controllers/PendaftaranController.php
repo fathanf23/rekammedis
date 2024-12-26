@@ -27,22 +27,43 @@ class PendaftaranController extends Controller
     }
     public function DokterStore(Request $request)
 {
-    // dd($request->all());
+    // Validasi input
+    $request->validate([
+        'keterangan_tambahan' => 'nullable|string',
+        'anamnesia' => 'nullable|string',
+        'alergi' => 'nullable|string',
+        'pendaftaran_id' => 'required|exists:pendaftaran,id',
+        'layanan' => 'nullable|array',
+        'layanan.*' => 'exists:layanan,id', // Pastikan layanan yang dipilih valid
+        'diagnosa' => 'nullable|array',
+        'diagnosa.*' => 'exists:diagnosa,id', // Pastikan diagnosa yang dipilih valid
+    ]);
+
+    // Hitung harga akhir dari layanan yang dipilih
+    $hargaAkhir = 0;
+    if ($request->has('layanan')) {
+        $hargaAkhir = DB::table('layanan')
+            ->whereIn('id', $request->layanan)
+            ->sum('harga_layanan');
+    }
+
+    // Tambahkan data ke tabel pemeriksaan
     $pemeriksaan = DB::table('pemeriksaan')->insertGetId([
         'status_periksa' => 'Sedang Diperiksa',
         'keterangan_tambahan' => $request->keterangan_tambahan,
-        'harga_akhir' => $request->harga_akhir,
+        'harga_akhir' => $hargaAkhir, // Total harga akhir dari layanan
         'anamnesia' => $request->anamnesia,
         'alergi' => $request->alergi,
-        'pendaftaran_id' => $request->pendaftaran_id, // ID pendaftaran yang diterima
-    ]); 
+        'pendaftaran_id' => $request->pendaftaran_id,
+    ]);
 
+    // Simpan layanan yang dipilih ke tabel hasil_periksa
     if ($request->has('layanan')) {
         foreach ($request->layanan as $layananId) {
             DB::table('hasil_periksa')->insert([
-                'pemeriksaan_id' => $pemeriksaan, // ID pemeriksaan yang baru disimpan
+                'pemeriksaan_id' => $pemeriksaan,
                 'layanan_id' => $layananId,
-                'diagnosa_id' => null, // ID layanan yang dipilih
+                'diagnosa_id' => null,
             ]);
         }
     }
@@ -53,7 +74,7 @@ class PendaftaranController extends Controller
             DB::table('hasil_periksa')->insert([
                 'pemeriksaan_id' => $pemeriksaan, // ID pemeriksaan
                 'diagnosa_id' => $diagnosaId,
-                'layanan_id' => null, 
+                'layanan_id' => null,
             ]);
         }
     }
@@ -66,10 +87,15 @@ class PendaftaranController extends Controller
 
 
 
+    public function daftar(){
+        $pasien = Pasien::get();
+        return view ('admin.pendaftaran.daftar', compact('pasien'));
+    }
 
     // admin
     public function daftar_store(Request $request)
 {
+    try {
     // Cari nomor pendaftaran terakhir
     $lastEntry = DB::table('pendaftaran')->orderBy('no_pendaftaran', 'desc')->first();
 
@@ -93,13 +119,17 @@ class PendaftaranController extends Controller
     // Gunakan $pasien_id dan $newNoPendaftaran untuk memasukkan data ke tabel pendaftaran
     DB::table('pendaftaran')->insert([
         'no_pendaftaran' => $newNoPendaftaran, // Nomor pendaftaran otomatis
+        'tgl_daftar' => now(),
         'keluhan' => $request->input('keluhan'),
         'riwayat_rm' => $request->input('riwayat_rm'),
         'pembayaran' => $request->input('pembayaran'),
         'pasien_id' => $pasien_id,
     ]);
 
-    return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pendaftaran!');
+    return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pendaftaran dan Pasien Baru!');
+    } catch (\Exception $e) {
+        return redirect('admin/pendaftaran/daftar')->with('error', 'Gagal Menambahkan Data Pendaftaran dan Pasien! Isi Data Dengan Benar!');
+    }
 }
 
 
@@ -117,7 +147,8 @@ class PendaftaranController extends Controller
     }
     public function store(Request $request)
     {
-        //
+        try {
+            // Insert data
         DB::table('pendaftaran')->insert([
             'no_pendaftaran' => $request->input('no_pendaftaran'),
             'keluhan' => $request->input('keluhan'),
@@ -125,8 +156,11 @@ class PendaftaranController extends Controller
             'pembayaran' => $request->input('pembayaran'),
             'pasien_id' => $request->input('pasien_id'),
         ]);
-        return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pendaftaran!');
+        return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pasien!');
+    } catch (\Exception $e) {
+        return redirect('admin/pendaftaran/create')->with('error', 'Gagal Menambahkan Data Pendaftaran! Isi Data Dengan Benar!');
     }
+}
     public function destroy(string $id)
     {
         $pendaftaran = pendaftaran::where('id', $id)->first();

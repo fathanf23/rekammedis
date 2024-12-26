@@ -51,4 +51,14 @@
     </div>
 </form>
 </main>
+@if(session('error'))
+<script>
+Swal.fire({
+    title: 'Gagal!',
+    text: "{{ session('error') }}",
+    icon: 'error',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
 @endsection

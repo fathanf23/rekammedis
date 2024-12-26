@@ -3,17 +3,15 @@
 <!-- DataTales Example -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
+<div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">DATA PASIEN</h6>
+        <a href="{{ url('/admin/pasien/create') }}" class="btn bg-primary d-flex align-items-center"
+           style="width: fit-content;">
+            <i class="fas fa-plus text-white mr-2"></i>
+            <span class="text-white font-weight-bold">Tambah Pasien</span>
+        </a>
     </div>
     <div class="card-body">
-        <div class="m-2">
-            <a href="{{ url('/admin/pasien/create') }}" class="btn bg-primary d-flex align-items-center"
-                style="width: fit-content;">
-                <i class="fas fa-plus text-white mr-2"></i>
-                <span class="text-white font-weight-bold">Tambah Pasien</span>
-            </a>
-        </div>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>

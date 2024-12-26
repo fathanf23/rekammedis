@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pasien;
 use DB;
+use PDF;
 
 class PasienController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function pasienPDF(){
+        // Query dengan join ke tabel relasi
+        $pasien = Pasien::all();
+    
+        // Load view dan generate PDF
+        $pdf = PDF::loadView('admin.pasien.pasienPDF', ['pasien' => $pasien])
+        ->setPaper('a4', 'potrait'); // Set ukuran dan orientasi kertas
+    
+        return $pdf->stream(); // Menampilkan di browser
+        }
     public function index()
     {
         $pasien = Pasien::get()->all();
@@ -35,16 +46,21 @@ class PasienController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+{
+    try {
+        // Insert data
         DB::table('pasien')->insert([
             'nm_pasien' => $request->input('nm_pasien'),
             'no_tlp' => $request->input('no_tlp'),
             'alamat' => $request->input('alamat'),
             'tgl_lahir' => $request->input('tgl_lahir'),
         ]);
+
         return redirect('admin/pasien/index')->with('success', 'Berhasil Menambahkan Data Pasien!');
+    } catch (\Exception $e) {
+        return redirect('admin/pasien/create')->with('error', 'Gagal Menambahkan Data Pasien! Isi Data Dengan Benar!');
     }
+}
 
     /**
      * Display the specified resource.

@@ -5,7 +5,10 @@
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Data Pasien
+        Data Pasien | Unduh Data Pasien (PDF)
+        <a href="{{url('admin/hasil_periksa/hasil_periksaPDF')}}" class="btn btn-danger mr-2">
+                <i class="fas fa-file-pdf"></i>
+            </a>
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -13,10 +16,10 @@
                 <tr>
                 <th>No</th>
                         <th>Nomor Daftar</th>
+                        <th>Nama Pasien</th>
                         <th>Keluhan</th>
                         <th>Riwayat</th>
                         <th>Pembayaran</th>
-                        <th>Nama Pasien</th>
                         <th>Aksi</th>
                 </tr>
             </thead>
@@ -25,16 +28,16 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$p->no_pendaftaran}}</td>
+                        <td>{{$p->pasien->nm_pasien}}</td>
                         <td>{{$p->keluhan}}</td>
                         <td>{{$p->riwayat_rm}}</td>
                         <td>{{$p->pembayaran}}</td>
-                        <td>{{$p->pasien->nm_pasien}}</td>
                         <td>
                         <!-- Tombol Delete -->
-                        <a href="#" class="btn btn-md btn-danger px-2" data-bs-toggle="modal"
+                        <!-- <a href="#" class="btn btn-md btn-danger px-2" data-bs-toggle="modal"
                             data-bs-target="#deleteModal{{$p->id}}">
                             <i class="fas fa-trash"></i> Delete
-                        </a>
+                        </a> -->
 
                         <!-- Modal -->
                         <div class="modal fade" id="deleteModal{{$p->id}}" tabindex="-1"
@@ -60,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('dokter/pendaftaran/periksa/'.$p->id)}}" class="btn btn-md btn-primary px-2"> 
+                        <a href="{{url('dokter/pendaftaran/periksa/'.$p->id)}}" class="btn btn-md btn-dark px-2"> 
                         <i class="fas fa-edit"></i></i> Periksa
                         </a>
                     </td>

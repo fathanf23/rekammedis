@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Klinik Kita</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{URL::asset ('dokter/css/styles.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -15,12 +15,14 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/dokter/dashboard')}}">
-                <img src="{{URL::asset('admin/img/klinikkita1.png')}}" class="img-fluid" width="120" alt="" srcset="">
+                <img src="{{URL::asset('admin/img/klinikkita1.png')}}" class="img-fluid m-4" width="130" alt="" srcset="">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-4">
                 </div>
+                
             </a>
+            
             <!-- Navbar Brand-->
 
             <!-- Sidebar Toggle-->
@@ -41,9 +43,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
+                        
                         <li><form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <div class="d-flex justify-content-center">
@@ -64,19 +64,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Data Master
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('dokter/pasien/indexdokter')}}">Data Pasien</a>
-                                    <a class="nav-link" href="{{url('dokter/pendaftaran/index')}}">Pendaftaran</a>
-                                    <a class="nav-link" href="{{url('dokter/pemeriksaan/index')}}">Pemeriksaan</a>
-                                </nav>
-                            </div>
+                            <div class="sb-sidenav-menu-heading">Pemeriksaan Oleh Dokter</div>
+                                <a class="nav-link" href="{{url('dokter/pendaftaran/index')}}">Pemeriksaan Pasien</a>
+                            <a class="nav-link" href="{{url('dokter/pemeriksaan/index')}}">Data Pemeriksaan</a>
                     </div>
                 </nav>
             </div>

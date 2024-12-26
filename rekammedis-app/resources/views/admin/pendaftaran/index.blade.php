@@ -3,23 +3,22 @@
 <!-- DataTales Example -->
 
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Pendaftaran Pasien</h6>
+<div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">DATA PENDAFTARAN</h6>
+        <a href="{{ url('/admin/pendaftaran/create') }}" class="btn bg-primary d-flex align-items-center"
+           style="width: fit-content;">
+            <i class="fas fa-plus text-white mr-2"></i>
+            <span class="text-white font-weight-bold">Daftar</span>
+        </a>
     </div>
     <div class="card-body">
-        <div class="m-2">
-            <a href="{{ url('/admin/pendaftaran/daftar') }}" class="btn bg-primary d-flex align-items-center"
-                style="width: 210px;">
-                <i class="fas fa-plus text-white mr-2"></i>
-                <span class="text-white font-weight-bold">Tambah Pendaftaran</span>
-            </a>
-        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nomor Daftar</th>
+                        <th>Tanggal Daftar</th>
                         <th>Keluhan</th>
                         <th>Riwayat</th>
                         <th>Pembayaran</th>
@@ -31,6 +30,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nomor Daftar</th>
+                        <th>Tanggal Daftar</th>
                         <th>Keluhan</th>
                         <th>Riwayat</th>
                         <th>Pembayaran</th>
@@ -43,6 +43,7 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$p->no_pendaftaran}}</td>
+                        <td>{{$p->tgl_daftar}}</td>
                         <td>{{$p->keluhan}}</td>
                         <td>{{$p->riwayat_rm}}</td>
                         <td>{{$p->pembayaran}}</td>
