@@ -101,4 +101,14 @@
         <button type="submit" class="btn btn-primary m-2">Simpan</button>
     </div>
 </form>
+@if(session('error'))
+<script>
+Swal.fire({
+    title: 'Gagal!',
+    text: "{{ session('error') }}",
+    icon: 'error',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
 @endsection

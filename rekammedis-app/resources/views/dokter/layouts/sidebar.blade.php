@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <link rel="icon" href="{{URL::asset('admin/img/klinikkita.png')}}" type="image/png">
+
         <title>Klinik Kita</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{URL::asset ('dokter/css/styles.css')}}" rel="stylesheet" />
@@ -34,7 +36,7 @@
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div> -->
             </form>
-            <span class="mr-2 d-none d-lg-inline text-white small">
+            <span class="mr-2 d-none text-uppercase d-lg-inline text-white small">
                                 {{ Auth::user()->username }}
                                
                                 </span>

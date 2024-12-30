@@ -27,7 +27,7 @@ class PendaftaranController extends Controller
     }
     public function DokterStore(Request $request)
 {
-    // Validasi input
+    try{
     $request->validate([
         'keterangan_tambahan' => 'nullable|string',
         'anamnesia' => 'nullable|string',
@@ -79,20 +79,21 @@ class PendaftaranController extends Controller
         }
     }
 
-    return redirect('dokter/pendaftaran/index')->with('success', 'Data Periksa berhasil disimpan!');
+    return redirect('dokter/pendaftaran/index')->with('success', 'Berhasil Menambahkan Data Pendaftaran dan Pasien Baru!');
+    } catch (\Exception $e) {
+        return redirect('dokter/pendaftaran/periksa')->with('error', 'Gagal Menambahkan Data Pendaftaran dan Pasien! Isi Data Dengan Benar!');
+    }
 }
 
 
 
 
 
-
+// Admin
     public function daftar(){
         $pasien = Pasien::get();
         return view ('admin.pendaftaran.daftar', compact('pasien'));
     }
-
-    // admin
     public function daftar_store(Request $request)
 {
     try {
@@ -131,9 +132,6 @@ class PendaftaranController extends Controller
         return redirect('admin/pendaftaran/daftar')->with('error', 'Gagal Menambahkan Data Pendaftaran dan Pasien! Isi Data Dengan Benar!');
     }
 }
-
-
-
     public function index()
     {
         $pendaftaran = Pendaftaran::get();

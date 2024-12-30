@@ -6,7 +6,7 @@
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Data Pasien | Unduh Data Pasien (PDF)
-        <a href="{{url('admin/hasil_periksa/hasil_periksaPDF')}}" class="btn btn-danger mr-2">
+        <a href="{{ url('admin/pasien/pasienPDF') }}" class="btn btn-danger mr-2">
                 <i class="fas fa-file-pdf"></i>
             </a>
     </div>

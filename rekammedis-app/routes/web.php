@@ -37,11 +37,12 @@ use App\Http\Controllers\DiagnosaController;
     // Dokter Dashboard
     Route::get('/dokter/dashboard', [DokterController::class, 'index'])->name('dokter');
     
+    
     // Dokter Pendaftaran Pasien
     Route::get('/dokter/pendaftaran/index', [PendaftaranController::class, 'indexdaftar']);
     Route::get('/dokter/pendaftaran/periksa/{id}', [PendaftaranController::class, 'periksa']);
     Route::post('/dokter/pendaftaran/periksa', [PendaftaranController::class, 'DokterStore'])->name('dokter.store');
-
+    
     
     // Dokter Pasien
     Route::get('/dokter/pasien/indexdokter', [PasienController::class, 'indexdokter']);
@@ -52,7 +53,7 @@ use App\Http\Controllers\DiagnosaController;
     
     // Admin Dashboard
     Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('admin');
-
+    
     // Routing Pasien
     Route::get('/admin/pasien/index', [PasienController::class, 'index']);
     Route::get('/admin/pasien/pasienPDF', [PasienController::class, 'pasienPDF']);

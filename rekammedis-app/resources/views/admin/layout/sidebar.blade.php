@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
+    <link rel="icon" href="{{URL::asset('admin/img/klinikkita.png')}}" type="image/png">
+    <title>Klinik Kita</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{URL::asset ('admin/vendor/fontawesome-free/css/all.min.css')}}"" rel=" stylesheet" type="text/css">
@@ -28,6 +28,8 @@
     <!-- Custom styles for this template-->
     <link href="{{URL::asset ('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -131,7 +133,6 @@
                                 </span>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -148,8 +149,6 @@
                                 </form>
                             </a>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
