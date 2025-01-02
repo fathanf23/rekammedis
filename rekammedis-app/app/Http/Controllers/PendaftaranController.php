@@ -117,7 +117,6 @@ class PendaftaranController extends Controller
         'tgl_lahir' => $request->input('tgl_lahir'),
     ]);
 
-    // Gunakan $pasien_id dan $newNoPendaftaran untuk memasukkan data ke tabel pendaftaran
     DB::table('pendaftaran')->insert([
         'no_pendaftaran' => $newNoPendaftaran, // Nomor pendaftaran otomatis
         'tgl_daftar' => now(),
@@ -171,4 +170,20 @@ class PendaftaranController extends Controller
         $pasien = Pasien::all();
         return view('admin.pendaftaran.edit', compact('pendaftaran', 'pasien'));
     }
+    public function update(Request $request, $id)
+{
+    try {
+        // Update data
+        DB::table('pendaftaran')->where('id', $id)->update([
+            'no_pendaftaran' => $request->input('no_pendaftaran'),
+            'keluhan' => $request->input('keluhan'),
+            'riwayat_rm' => $request->input('riwayat_rm'),
+            'pembayaran' => $request->input('pembayaran'),
+            'pasien_id' => $request->input('pasien_id'),
+        ]);
+        return redirect('admin/pendaftaran/index')->with('success', 'Berhasil Memperbarui Data Pendaftaran!');
+    } catch (\Exception $e) {
+        return redirect('admin/pendaftaran/edit/' . $id)->with('error', 'Gagal Memperbarui Data Pendaftaran! Isi Data Dengan Benar!');
+    }
+}
 }

@@ -72,6 +72,7 @@ use App\Http\Controllers\DiagnosaController;
     Route::post('/admin/pendaftaran/store', [PendaftaranController::class, 'store']);
     Route::get('/admin/pendaftaran/destroy/{id}', [PendaftaranController::class, 'destroy']);
     Route::get('/admin/pendaftaran/edit/{id}', [PendaftaranController::class, 'edit']);
+    Route::post('/admin/pendaftaran/update/{id}', [PendaftaranController::class, 'update']);
     
     // Routing Pemeriksaan
     Route::get('/admin/pemeriksaan/index', [PemeriksaanController::class, 'index']);
